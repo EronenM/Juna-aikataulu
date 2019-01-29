@@ -35,9 +35,10 @@ namespace Juna_aikataulut
             {
                 acSource.Add(item.stationName);
             }
-
+            //näillä saadaan ennakoivateksti näkymään tbMistä ja tbMinne kenttiin
             tbMistä.AutoCompleteCustomSource = acSource;
             tbMinne.AutoCompleteCustomSource = acSource;
+            //palautetaan paikat lista niin siihen päästää käsiksi myöhemmin
             return paikat;
         }
 
@@ -54,12 +55,13 @@ namespace Juna_aikataulut
 
         private void bHae_Click(object sender, EventArgs e)
         {
-
+            //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
+            //selvitä vielä tuo First(), miksi se tarvitaan?
             string lähtöasema = paikat.Where(p => p.stationName == tbMistä.Text).First().stationShortCode;
             string kohdeasema = paikat.Where(p => p.stationName == tbMinne.Text).First().stationShortCode;
 
             string[] tulostelista = tulostaJunatVälillä(lähtöasema, kohdeasema);
-
+                        
             foreach (var juna in tulostelista)
             {
                 lbTulos.Items.Add(juna);
@@ -72,6 +74,8 @@ namespace Juna_aikataulut
 
             // tähän joku error -käsittely, jos junia ei löydy asemien välille
             List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
+
+            //junat pitäisi ensin sortata jotenkin päivämäärän mukaan
             
             string s = string.Join(",", junat.Select(j => j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
             string[] lista = s.Split(',');
