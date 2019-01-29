@@ -73,7 +73,7 @@ namespace Juna_aikataulut
             // tähän joku error -käsittely, jos junia ei löydy asemien välille
             List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
             
-            string s = string.Join(", ", junat.Select(j => j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
+            string s = string.Join(",", junat.Select(j => j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
             string[] lista = s.Split(',');
 
             return lista;
