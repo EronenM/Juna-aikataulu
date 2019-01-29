@@ -35,19 +35,24 @@ namespace Juna_aikataulut
             string lähtöasema = tbMistä.Text;
             string kohdeasema = tbMinne.Text;
 
-            //tbTulos.Text = (lähtöasema + " " + kohdeasema);
+            string[] tulostelista = tulostaJunatVälillä(lähtöasema, kohdeasema);
 
-            tbTulos.Text = tulostaJunatVälillä(lähtöasema, kohdeasema);
+            foreach (var juna in tulostelista)
+            {
+                lbTulos.Items.Add(juna);
+            }
         }
 
-        private static string tulostaJunatVälillä(string lähtöasema, string kohdeasema)
+        private static string[] tulostaJunatVälillä(string lähtöasema, string kohdeasema)
         {
             APIUtil rata = new APIUtil();
 
             List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
-            string s = string.Join(", ", junat.Select(j => j.trainNumber + " " + j.trainType));
-            Console.WriteLine($"Junat {lähtöasema} ==> {kohdeasema}: " + s);
-            return s;
+            string s = string.Join(", ", junat.Select(j => j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString()+ " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
+            string[] lista = s.Split(',');
+
+            return lista;
+
         }
 
 

@@ -33,17 +33,18 @@
             this.tbMistä = new System.Windows.Forms.TextBox();
             this.tbMinne = new System.Windows.Forms.TextBox();
             this.lMinne = new System.Windows.Forms.Label();
-            this.tbTulos = new System.Windows.Forms.TextBox();
+            this.lbTulos = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // bHae
             // 
+            this.bHae.BackColor = System.Drawing.Color.Red;
             this.bHae.Location = new System.Drawing.Point(455, 40);
             this.bHae.Name = "bHae";
             this.bHae.Size = new System.Drawing.Size(176, 47);
             this.bHae.TabIndex = 0;
             this.bHae.Text = "Hae";
-            this.bHae.UseVisualStyleBackColor = true;
+            this.bHae.UseVisualStyleBackColor = false;
             this.bHae.Click += new System.EventHandler(this.bHae_Click);
             // 
             // lMistä
@@ -58,6 +59,7 @@
             // 
             // tbMistä
             // 
+            this.tbMistä.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbMistä.Location = new System.Drawing.Point(18, 52);
             this.tbMistä.Name = "tbMistä";
             this.tbMistä.Size = new System.Drawing.Size(131, 22);
@@ -65,6 +67,7 @@
             // 
             // tbMinne
             // 
+            this.tbMinne.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbMinne.Location = new System.Drawing.Point(228, 52);
             this.tbMinne.Name = "tbMinne";
             this.tbMinne.Size = new System.Drawing.Size(131, 22);
@@ -79,19 +82,21 @@
             this.lMinne.TabIndex = 3;
             this.lMinne.Text = "Minne";
             // 
-            // tbTulos
+            // lbTulos
             // 
-            this.tbTulos.Location = new System.Drawing.Point(21, 130);
-            this.tbTulos.Name = "tbTulos";
-            this.tbTulos.Size = new System.Drawing.Size(337, 22);
-            this.tbTulos.TabIndex = 5;
+            this.lbTulos.FormattingEnabled = true;
+            this.lbTulos.ItemHeight = 16;
+            this.lbTulos.Location = new System.Drawing.Point(21, 168);
+            this.lbTulos.Name = "lbTulos";
+            this.lbTulos.Size = new System.Drawing.Size(337, 180);
+            this.lbTulos.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 523);
-            this.Controls.Add(this.tbTulos);
+            this.Controls.Add(this.lbTulos);
             this.Controls.Add(this.tbMinne);
             this.Controls.Add(this.lMinne);
             this.Controls.Add(this.tbMistä);
@@ -112,7 +117,7 @@
         private System.Windows.Forms.TextBox tbMistä;
         private System.Windows.Forms.TextBox tbMinne;
         private System.Windows.Forms.Label lMinne;
-        private System.Windows.Forms.TextBox tbTulos;
+        private System.Windows.Forms.ListBox lbTulos;
     }
 }
 
