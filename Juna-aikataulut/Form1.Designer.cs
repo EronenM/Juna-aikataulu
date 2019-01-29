@@ -59,6 +59,8 @@
             // 
             // tbMistä
             // 
+            this.tbMistä.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbMistä.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMistä.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbMistä.Location = new System.Drawing.Point(18, 52);
             this.tbMistä.Name = "tbMistä";
@@ -67,6 +69,8 @@
             // 
             // tbMinne
             // 
+            this.tbMinne.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbMinne.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMinne.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbMinne.Location = new System.Drawing.Point(228, 52);
             this.tbMinne.Name = "tbMinne";
