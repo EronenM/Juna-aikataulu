@@ -80,9 +80,9 @@
             // 
             // tbTulos
             // 
-            this.tbTulos.Location = new System.Drawing.Point(21, 130);
+            this.tbTulos.Location = new System.Drawing.Point(18, 130);
             this.tbTulos.Name = "tbTulos";
-            this.tbTulos.Size = new System.Drawing.Size(337, 22);
+            this.tbTulos.Size = new System.Drawing.Size(341, 22);
             this.tbTulos.TabIndex = 5;
             // 
             // Form1
