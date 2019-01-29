@@ -26,5 +26,10 @@ namespace Juna_aikataulut
         {
 
         }
+
+        private void tbMinne_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

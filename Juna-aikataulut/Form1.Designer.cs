@@ -68,6 +68,7 @@
             this.tbMinne.Name = "tbMinne";
             this.tbMinne.Size = new System.Drawing.Size(131, 22);
             this.tbMinne.TabIndex = 4;
+            this.tbMinne.TextChanged += new System.EventHandler(this.tbMinne_TextChanged);
             // 
             // lMinne
             // 
