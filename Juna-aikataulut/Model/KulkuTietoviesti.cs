@@ -20,5 +20,7 @@ namespace RataDigiTraffic.Model
         public string nextStation; // string Liikennepaikan tunniste, jonka alueella juna aiemmin oli.
         public string previousStation; // string Liikennepaikan tunniste, jonka alueelle juna ajaa seuraavaksi.
         public string type; // string Tapahtuman tyyppi.OCCUPY tarkoittaa, että juna varasi raideosuuden. RELEASE tarkoittaa, että juna vapautti raideosuuden.
+
+
     }
 }
