@@ -44,6 +44,7 @@
             this.bHae.TabIndex = 0;
             this.bHae.Text = "Hae";
             this.bHae.UseVisualStyleBackColor = true;
+            this.bHae.Click += new System.EventHandler(this.bHae_Click);
             // 
             // lMistä
             // 

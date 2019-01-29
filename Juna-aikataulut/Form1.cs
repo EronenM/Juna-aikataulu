@@ -26,5 +26,15 @@ namespace Juna_aikataulut
         {
 
         }
+
+        private void bHae_Click(object sender, EventArgs e)
+        {
+
+            string lähtöasema = tbMistä.Text;
+            string kohdeasema = tbMinne.Text;
+
+            tbTulos.Text = (lähtöasema + " " + kohdeasema);
+
+        }
     }
 }
