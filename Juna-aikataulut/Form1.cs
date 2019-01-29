@@ -21,10 +21,31 @@ namespace Juna_aikataulut
         {
 
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void tbTulos_TextChanged(object sender, EventArgs e)
         {
+            
+        }
 
+        private void tbJunanKulku_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        // Lähtöpäivämäärän asetus
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime pvm = dateTimePicker1.Value;
+            this.tbJunanKulku.Text = dateTimePicker1.Value.ToString("HH:mm");
+            string departureTime = tbJunanKulku.Text;       
+            
+
+        }
+
+        private void bHae_Click(object sender, EventArgs e)
+        {
+            string juna = "175";
+            this.tbTulos.Text = juna;
         }
     }
 }

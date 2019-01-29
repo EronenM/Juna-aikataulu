@@ -18,5 +18,6 @@ namespace Juna_aikataulut
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
     }
 }

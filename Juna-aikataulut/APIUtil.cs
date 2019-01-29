@@ -62,6 +62,23 @@ namespace RataDigiTraffic
             res = JsonConvert.DeserializeObject<List<Kulkutietoviesti>>(json);
             return res;
         }
+        public List<Kulkutietoviesti> JunanPysähdykset(string paikka)
+        {
+            string json = "";
+            string url = $"https://rata.digitraffic.fi/api/v1/train-tracking?station={paikka}&departure_date={DateTime.Today.ToString("yyyy-MM-dd")}";
+
+            using (var client = new HttpClient())
+            {
+
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync(url).Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+            List<Kulkutietoviesti> res;
+            res = JsonConvert.DeserializeObject<List<Kulkutietoviesti>>(json);
+            return res;
+        }
     }
 
 
