@@ -20,7 +20,7 @@ namespace RataDigiTraffic.Model
     }
 
 
-    //    passengerTraffic: boolean Onko liikennepaikalla kaupallista matkustajaliikennettä
+    //passengerTraffic: boolean Onko liikennepaikalla kaupallista matkustajaliikennettä
     //countryCode: string Liikennepaikan maatunnus
     //stationName: string Liikennepaikan nimi
     //stationShortCode: string Liikennepaikan lyhenne
