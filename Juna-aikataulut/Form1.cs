@@ -60,28 +60,28 @@ namespace Juna_aikataulut
             string lähtöasema = paikat.Where(p => p.stationName == tbMistä.Text).First().stationShortCode;
             string kohdeasema = paikat.Where(p => p.stationName == tbMinne.Text).First().stationShortCode;
 
-            string[] tulostelista = tulostaJunatVälillä(lähtöasema, kohdeasema);
-                        
-            foreach (var juna in tulostelista)
-            {
-                lbTulos.Items.Add(juna);
-            }
+            tulostaJunatVälillä(lähtöasema, kohdeasema);
         }
 
-        private static string[] tulostaJunatVälillä(string lähtöasema, string kohdeasema)
+        private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)
         {
             APIUtil rata = new APIUtil();
 
             // tähän joku error -käsittely, jos junia ei löydy asemien välille
             List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
 
-            //junat pitäisi ensin sortata jotenkin päivämäärän mukaan
-            
-            string s = string.Join(",", junat.Select(j => j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
-            string[] lista = s.Split(',');
+            int counter = 0;
 
-            return lista;
+            foreach (var j in junat)
+            {
+                while (j.timeTableRows[counter].stationShortCode != lähtöasema)
+                {
+                    counter++;
+                }
 
+                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[counter].scheduledTime.ToLongTimeString());
+                counter = 0;
+            }
         }
     }
 }
