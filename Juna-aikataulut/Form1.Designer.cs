@@ -37,6 +37,9 @@
             this.valitsenappi = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.poistanappi = new System.Windows.Forms.Button();
+            this.VR = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.junatnet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bHae
@@ -123,11 +126,42 @@
             this.poistanappi.UseVisualStyleBackColor = true;
             this.poistanappi.Click += new System.EventHandler(this.poistanappi_Click);
             // 
+            // VR
+            // 
+            this.VR.Location = new System.Drawing.Point(789, 43);
+            this.VR.Name = "VR";
+            this.VR.Size = new System.Drawing.Size(112, 43);
+            this.VR.TabIndex = 10;
+            this.VR.Text = "VR";
+            this.VR.UseVisualStyleBackColor = true;
+            this.VR.Click += new System.EventHandler(this.VR_Click);
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(399, 111);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(161, 42);
+            this.webBrowser1.TabIndex = 11;
+            // 
+            // junatnet
+            // 
+            this.junatnet.Location = new System.Drawing.Point(797, 104);
+            this.junatnet.Name = "junatnet";
+            this.junatnet.Size = new System.Drawing.Size(103, 48);
+            this.junatnet.TabIndex = 12;
+            this.junatnet.Text = "Junat.net";
+            this.junatnet.UseVisualStyleBackColor = true;
+            this.junatnet.Click += new System.EventHandler(this.junatnet_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 523);
+            this.ClientSize = new System.Drawing.Size(1172, 523);
+            this.Controls.Add(this.junatnet);
+            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.VR);
             this.Controls.Add(this.poistanappi);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.valitsenappi);
@@ -156,6 +190,9 @@
         private System.Windows.Forms.Button valitsenappi;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button poistanappi;
+        private System.Windows.Forms.Button VR;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button junatnet;
     }
 }
 

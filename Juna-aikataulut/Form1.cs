@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -92,7 +93,16 @@ namespace Juna_aikataulut
             if (listBox1.Items.Count > 0)
                 listBox1.SelectedIndex = 0;
             lbTulos.SelectedIndex = lbTulos.Items.Count - 1;
+        }
 
+        private void VR_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("www.vr.fi");
+        }
+
+        private void junatnet_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.junat.net/fi/");
         }
     }
-    }
+}
