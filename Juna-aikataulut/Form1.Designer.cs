@@ -55,7 +55,6 @@
             this.lMistä.Size = new System.Drawing.Size(41, 17);
             this.lMistä.TabIndex = 1;
             this.lMistä.Text = "Mistä";
-            this.lMistä.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbMistä
             // 
