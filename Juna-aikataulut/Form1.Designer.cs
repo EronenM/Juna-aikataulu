@@ -34,6 +34,9 @@
             this.tbMinne = new System.Windows.Forms.TextBox();
             this.lMinne = new System.Windows.Forms.Label();
             this.lbTulos = new System.Windows.Forms.ListBox();
+            this.valitsenappi = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.poistanappi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bHae
@@ -91,11 +94,43 @@
             this.lbTulos.Size = new System.Drawing.Size(337, 180);
             this.lbTulos.TabIndex = 6;
             // 
+            // valitsenappi
+            // 
+            this.valitsenappi.Location = new System.Drawing.Point(441, 170);
+            this.valitsenappi.Name = "valitsenappi";
+            this.valitsenappi.Size = new System.Drawing.Size(104, 43);
+            this.valitsenappi.TabIndex = 7;
+            this.valitsenappi.Text = "Valitse";
+            this.valitsenappi.UseVisualStyleBackColor = true;
+            this.valitsenappi.Click += new System.EventHandler(this.valitsenappi_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(594, 168);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(262, 180);
+            this.listBox1.TabIndex = 8;
+            // 
+            // poistanappi
+            // 
+            this.poistanappi.Location = new System.Drawing.Point(441, 219);
+            this.poistanappi.Name = "poistanappi";
+            this.poistanappi.Size = new System.Drawing.Size(104, 46);
+            this.poistanappi.TabIndex = 9;
+            this.poistanappi.Text = "Poista";
+            this.poistanappi.UseVisualStyleBackColor = true;
+            this.poistanappi.Click += new System.EventHandler(this.poistanappi_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 523);
+            this.Controls.Add(this.poistanappi);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.valitsenappi);
             this.Controls.Add(this.lbTulos);
             this.Controls.Add(this.tbMinne);
             this.Controls.Add(this.lMinne);
@@ -118,6 +153,9 @@
         private System.Windows.Forms.TextBox tbMinne;
         private System.Windows.Forms.Label lMinne;
         private System.Windows.Forms.ListBox lbTulos;
+        private System.Windows.Forms.Button valitsenappi;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button poistanappi;
     }
 }
 
