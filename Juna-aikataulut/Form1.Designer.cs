@@ -59,7 +59,7 @@
             // 
             // tbMistä
             // 
-            this.tbMistä.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbMistä.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbMistä.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMistä.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tbMistä.Location = new System.Drawing.Point(21, 52);
