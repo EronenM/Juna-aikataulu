@@ -1,0 +1,433 @@
+Ahonpää
+Ahvenus
+Airaksela
+Aittaluoto
+Ajos
+Alapitkä
+Alavus
+Alholma
+Arola
+Asola
+Dragsvik
+Eno
+Ervelä
+Eskola
+Espoo
+Haapajärvi
+Haapakoski
+Haapamäki
+Haaparanta
+Haarajoki
+Hakosilta
+Hamina
+Hammaslahti
+Hanala
+Hangonsaari
+Hankasalmi
+Hanko asema
+Hanko tavara
+Hanko-Pohjoinen
+Harjavalta
+Harju
+Harviala
+Haukipudas
+Haukivuori
+Hausjärvi tavara
+Haviseva
+Havukoski
+Heikkilä
+Heinola
+Heinoo
+Heinävaara
+Heinävesi
+Helsinki asema
+Helsinki Kivihaka
+Henna
+Hiekkaharju
+Hiirola
+Hillosensalmi
+Hirvineva
+Humppila
+Huopalahti
+Huutokoski
+Hyrkäs
+Hyrynsalmi
+Hyvinkää
+Hämeenlinna
+Härmä
+Ii
+Iisalmi
+Ilmala asema
+Ilmala ratapiha
+Ilomantsi
+Imatra asema
+Imatra tavara
+Imatrankoski
+Imatrankoski-raja
+Immola
+Inkeroinen
+Inkoo
+Isokyrö
+Jalasjärvi
+Jepua
+Joensuu asema
+Joensuu Peltola
+Joensuu Sulkulahti
+Jokela
+Joutseno
+Juankoski
+Jutila
+Juurikorpi
+Jyväskylä
+Jämsä
+Jämsänkoski
+Järvelä
+Järvenpää asema
+Kaipiainen
+Kaipola
+Kaitjärvi
+Kajaani
+Kalkku
+Kalvitsa
+Kangas
+Kannelmäki
+Kannonkoski
+Kannus
+Karhejärvi
+Karhukangas
+Karjaa
+Karkku
+Karviainen
+Kaskinen
+Kattilaharju
+Kauhajoki
+Kauhava
+Kauklahti asema
+Kaulinranta
+Kauniainen
+Kauppilanmäki
+Keitelepohja
+Kekomäki
+Kemi
+Kemijärvi
+Kempele
+Kerava asema
+Kerimäki
+Kesälahti
+Keuruu
+Kilpua
+Kinni
+Kirkkonummi
+Kirkniemi
+Kitee
+Kiukainen
+Kiuruvesi
+Kivesjärvi
+Koivu
+Kokemäki
+Kokkola
+Kolari
+Kolppi
+Kommila
+Kontiolahti
+Kontiomäki
+Korkeakoski
+Korvensuo
+Koskenkorva
+Kotka asema
+Kotka Hovinsaari
+Kotka Mussalo
+Kotka tavara
+Kotkan satama
+Kotolahti
+Kouvola asema
+Kouvola lajittelu
+Kouvola Oikoraide
+Kouvola tavara
+Kovjoki
+Kruunupyy
+Kuivasjärvi
+Kullasvaara
+Kuopio asema
+Kuopio tavara
+Kupittaa
+Kurkimäki
+Kuurila
+Kuusankoski
+Kymi
+Kyrö
+Kytömaa
+Kälviä
+Käpylä
+Köykkäri
+Laajavuori
+Lahdenperä
+Lahnaslampi
+Lahti
+Laihia
+Lakiala
+Lamminkoski
+Lamminniemi
+Lapinjärvi
+Lapinlahti
+Lappeenranta
+Lappohja
+Lapua
+Larvakytö
+Laukaa
+Laurila
+Lauritsala
+Lautiosaari
+Lelkola
+Lempäälä
+Leppäkoski
+Leppävaara
+Leteensuo
+Lieksa
+Lielahti
+Lievestuore
+Liminka
+Lohja
+Loimaa
+Loukolampi
+Loviisan satama
+Luikonlahti
+Luumäki
+Länkipohja
+Maanselkä
+Maaria
+Madesjärvi
+Majajärvi
+Malmi
+Mankala
+Markkala
+Matkaneva
+Mattila
+Mikkeli
+Misi
+Moskova_(Leningradski)
+Muhos
+Mukkula
+Murtomäki
+Mustolan satama
+Muukko
+Muurame
+Muurola
+Myllykangas
+Myllyoja
+Mynttilä
+Mynämäki
+Myyrmäki
+Mäntsälä
+Mänttä
+Mäntyharju
+Mäntyluoto
+Naantali
+Naarajärvi
+Nakkila
+Niemenpää
+Niinimäki
+Niinisalo
+Niirala
+Niirala-raja
+Niittylahti
+Nivala
+Nokia
+Nummela
+Nurmes
+Oitti
+Orivesi
+Otanmäki
+Otava
+Oulainen
+Oulu asema
+Oulu Nokela
+Oulu Oritkari
+Oulu tavara
+Oulu Tuira
+Oulunkylä
+Paimenportti
+Paimio
+Palopuro
+Paltamo
+Pankakoski
+Parikkala
+Parkano
+Parola
+Pasila asema
+Pasila autojuna-asema
+Pasila tavara
+Patokangas
+Pelkola
+Pello
+Peräseinäjoki
+Pesiökylä
+Petroskoi / Petrozavodsk
+Petäjävesi
+Pieksämäki asema
+Pieksämäki lajittelu
+Pieksämäki tavara
+Pieksämäki Temu
+Pietari_(Finljandski)
+Pietarsaari
+Pihlajavesi
+Pihtipudas
+Piikkiö
+Pikkarala
+Pitkämäki
+Pohjankuru
+Pohjois-Louko
+Poikkeus
+Pori
+Porvoo
+Puhos
+Pulsa
+Punkaharju
+Purola
+Pyhäkumpu
+Pyhäkumpu erkanemisvaihde
+Pyhäsalmi
+Pännäinen
+Pääskylahti
+Raahe
+Raippo
+Raisio
+Rajamäki
+Rajaperkiö
+Rantasalmi
+Rasinsuo
+Ratikylä
+Rauha
+Rauma
+Raunio
+Rautaruukki
+Rautjärvi
+Riihimäki Arolampi
+Riihimäki asema
+Riihimäki lajittelu
+Riihimäki tavara
+Riijärvi
+Riippa
+Ristiina
+Ristijärvi
+Rovaniemi
+Ruha
+Ruokosuo
+Ruukki
+Ruusumäki
+Ryttylä
+Röyttä
+Saakoski
+Saari
+Saarijärvi
+Salminen
+Salo
+Sammalisto
+Saunakallio
+Saunamäki
+Savonlinna asema
+Seinäjoki asema
+Seinäjoki tavara
+Selänpää
+Sieppijärvi
+Sievi
+Siikamäki
+Siilinjärvi Asema
+Simo
+Simpele
+Sipilä
+Sisättö
+Siuntio
+Siuro
+Sköldvik
+Sukeva
+Suolahti
+Suonenjoki
+Suoniemi
+Syrjämäki
+Sysmäjärvi
+Säkäniemi
+Sääksjärvi
+Taavetti
+Tahkoluoto
+Taipale
+Talviainen
+Talvivaara
+Tampere asema
+Tampere Järvensivu
+Tampere tavara
+Tampere Viinikka
+Tapavainola
+Tervola
+Teuva
+Tikkala
+Tikkaperä
+Tikkurila asema
+Tohmajärvi
+Toijala
+Toivala
+Tommola
+Torkkeli
+Tornio asema
+Tornio-raja
+Tuomioja
+Turenki
+Turku asema
+Turku satama
+Turku tavara
+Tuupovaara
+Törmä
+Törölä
+Uimaharju
+Urjala
+Utajärvi
+Uusikaupunki
+Uusikylä
+Vaajakoski
+Vaala
+Vaasa
+Vahojärvi
+Vainikkala asema
+Vainikkala tavara
+Vainikkala-raja
+Valkeakoski
+Valtimo
+Vammala
+Vanattara
+Varkaus
+Vartius
+Vartius-raja
+Vasikkahaka
+Vaskiluoto
+Venetmäki
+Vesanka
+Vihanti
+Vihtari
+Vihtavuori
+Viiala
+Viinijärvi
+Viipuri
+Villähde
+Vilppula
+Vinnilä
+Virkamies
+Voltti
+Vuohijärvi
+Vuojoki
+Vuokatti
+Vuonislahti
+Vuonos
+Vuosaari
+Värtsilä
+Ykspihlaja tavara
+Ykspihlaja väliratapiha
+Ylivalli
+Ylivieska
+Yläkoski
+Ylämylly
+Ylöjärvi
+Ypykkävaara
+Äetsä
+Ähtäri
+Ämmänsaari
+Äänekoski

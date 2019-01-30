@@ -17,6 +17,29 @@ namespace Juna_aikataulut
         public Form1()
         {
             InitializeComponent();
+            tulostaAsemat();
+        }
+
+        List<Liikennepaikka> paikat;
+
+        private List<Liikennepaikka> tulostaAsemat()
+        {
+            //luodaan autocomplete olio acSource
+            AutoCompleteStringCollection acSource = new AutoCompleteStringCollection();
+            //luodaan APIUtil olio rata, jotta päästään APIUtil metodeihin käsiksi
+            APIUtil rata = new APIUtil();
+            //laitetaan paikka listaan rata-luokkainstanssin Liikennepaikat-metodilla kaikki mahdolliset asemaoliot
+            paikat = rata.Liikennepaikat();
+            //käydään paikat listaa läpi ja lisätään acSourseen kaikki itemit, joiden tyyppin on "STATION"
+            foreach (var item in paikat.Where(p => p.type == "STATION"))
+            {
+                acSource.Add(item.stationName);
+            }
+            //näillä saadaan ennakoivateksti näkymään tbMistä ja tbMinne kenttiin
+            tbMistä.AutoCompleteCustomSource = acSource;
+            tbMinne.AutoCompleteCustomSource = acSource;
+            //palautetaan paikat lista niin siihen päästää käsiksi myöhemmin
+            return paikat;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,30 +54,45 @@ namespace Juna_aikataulut
 
         private void bHae_Click(object sender, EventArgs e)
         {
+     
+            //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
+            //selvitä vielä tuo First(), miksi se tarvitaan?
+            string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+            string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
 
-            string lähtöasema = tbMistä.Text;
-            string kohdeasema = tbMinne.Text;
-
-            string[] tulostelista = tulostaJunatVälillä(lähtöasema, kohdeasema);
-
-            foreach (var juna in tulostelista)
-            {
-                lbTulos.Items.Add(juna);
-            }
+            tulostaJunatVälillä(lähtöasema, kohdeasema);
         }
 
-        private static string[] tulostaJunatVälillä(string lähtöasema, string kohdeasema)
+        private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)
         {
             APIUtil rata = new APIUtil();
 
+            // tähän joku error -käsittely, jos junia ei löydy asemien välille
             List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
-            string s = string.Join(", ", junat.Select(j => j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString()+ " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
-            string[] lista = s.Split(',');
 
-            return lista;
+            int counter = 0;
 
+            foreach (var j in junat)
+            {
+                while (j.timeTableRows[counter].stationShortCode != lähtöasema)
+                {
+                    counter++;
+                }
+
+                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[counter].scheduledTime.ToLongTimeString());
+                counter = 0;
+            }
         }
 
+        //private void tbMistä_Leave(object sender, EventArgs e)
+        //{
+        //    if(tbMistä.Text.Length != 0)
+        //    {
+        //        if (paikat.  Contains(tbMistä.Text.ToLower()).First().stationShortCode)
+        //        {
 
+        //        }
+        //    }
+        //}
     }
 }
