@@ -115,7 +115,7 @@
             this.lbJunanKulku.ItemHeight = 16;
             this.lbJunanKulku.Location = new System.Drawing.Point(452, 169);
             this.lbJunanKulku.Name = "lbJunanKulku";
-            this.lbJunanKulku.Size = new System.Drawing.Size(190, 196);
+            this.lbJunanKulku.Size = new System.Drawing.Size(266, 196);
             this.lbJunanKulku.TabIndex = 10;
             this.lbJunanKulku.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
             // 

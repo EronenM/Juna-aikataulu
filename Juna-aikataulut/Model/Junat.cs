@@ -50,19 +50,19 @@ namespace RataDigiTraffic.Model
 
     }
 }
-public class JunanAsemat
-{
-    public int trainNumber;//; // 1-99999  Junan numero.Esim junan "IC 59" junanumero on 59
-    public DateTime departureDate; // date Junan ensimmäisen lähdön päivämäärä
-    public int operatorUICCode; // 1-9999   Junan operoiman operaattorin UIC-koodi
-    public string operatorShortCode; // vr, vr-track, destia, ...  Lista operaattoreista löytyy täältä.
-    public string trainType; // IC, P, S, ...
-    public string trainCategory; // lähiliikenne, kaukoliikenne, tavaraliikenne, ...
-    public string commuterLineID; // Z, K, N....
-    public bool runningCurrently; // true/false  Onko juna tällä hetkellä kulussa
-    public bool cancelled; // true/false    Totta, jos junan peruminen on tehty 10 vuorokauden sisällä.Yli 10 vuorokautta sitten peruttuja junia ei palauteta rajapinnassa laisinkaan.
-    public long version; // positive integer   Versionumero, jossa juna on viimeksi muuttunut
-    public string timetableType; // REGULAR tai ADHOC.Kertoo onko junan aikataulun ratakapasiteetti haettu säännöllisenä (REGULAR) vai kiireellisenä yksittäistä päivää koskevana(ADHOC).
-    public DateTime timetableAcceptanceDate;
-    public List<Aikataulurivi> timeTableRows;//  Kuvaa saapumisia ja lähtöjä liikennepaikoilta.Järjestetty reitin mukaiseen järjestykseen.
-}
+//public class JunanAsemat
+//{
+//    public int trainNumber;//; // 1-99999  Junan numero.Esim junan "IC 59" junanumero on 59
+//    public DateTime departureDate; // date Junan ensimmäisen lähdön päivämäärä
+//    public int operatorUICCode; // 1-9999   Junan operoiman operaattorin UIC-koodi
+//    public string operatorShortCode; // vr, vr-track, destia, ...  Lista operaattoreista löytyy täältä.
+//    public string trainType; // IC, P, S, ...
+//    public string trainCategory; // lähiliikenne, kaukoliikenne, tavaraliikenne, ...
+//    public string commuterLineID; // Z, K, N....
+//    public bool runningCurrently; // true/false  Onko juna tällä hetkellä kulussa
+//    public bool cancelled; // true/false    Totta, jos junan peruminen on tehty 10 vuorokauden sisällä.Yli 10 vuorokautta sitten peruttuja junia ei palauteta rajapinnassa laisinkaan.
+//    public long version; // positive integer   Versionumero, jossa juna on viimeksi muuttunut
+//    public string timetableType; // REGULAR tai ADHOC.Kertoo onko junan aikataulun ratakapasiteetti haettu säännöllisenä (REGULAR) vai kiireellisenä yksittäistä päivää koskevana(ADHOC).
+//    public DateTime timetableAcceptanceDate;
+//    public List<Aikataulurivi> timeTableRows;//  Kuvaa saapumisia ja lähtöjä liikennepaikoilta.Järjestetty reitin mukaiseen järjestykseen.
+//}

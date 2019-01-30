@@ -23,49 +23,93 @@ namespace Juna_aikataulut
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }      
-       
+        }
 
         // Lähtöpäivämäärän asetus
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime pvm = dateTimePicker1.Value;
             this.lbJunanKulku.Text = dateTimePicker1.Value.ToString("HH:mm");
-            string departureTime = lbJunanKulku.Text;       
-            
+            string departureTime = lbJunanKulku.Text;
+
 
         }
 
         private void bHae_Click(object sender, EventArgs e)
         {
-            string date = "2019-01-29";
-            int nro = 175;
-            string[] pysäkitLista = juniaAsemalla(date, nro);
-
-            foreach (var juna in pysäkitLista)
-            {
-                lbJunanKulku.Items.Add(juna);
-            }
-
-
-        
+            string date = "2019-01-30";
+            int nro = 273;
+            juniaAsemalla(date, nro);
 
         }
 
         private void lb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
 
 
         }
 
-        private string[] juniaAsemalla(string date, int nro)
+        private void juniaAsemalla(string date, int nro)
         {
             APIUtil junanpysähdykset = new APIUtil();
             List<Juna> junat = junanpysähdykset.JunanAsemat(date, nro);
-            string s = string.Join(", ", junat.Select(j => j.trainNumber + j.trainType + " " + j.timeTableRows[0].scheduledTime.ToLongTimeString()));
-            string[] lista = s.Split(',');
-            return lista;
-        }    
+
+            int timeTableRowCounter = 0;
+
+            foreach (var juna in junat)
+            {
+                for (int i =01; i < juna.timeTableRows.Count; i++)
+                {
+
+                    if (juna.timeTableRows[timeTableRowCounter].trainStopping == true)
+                    {
+                        DateTime saapumisAika = new DateTime();
+                        DateTime lähtöAika = new DateTime();
+                        string lähtöAika1;
+                        string saapumisAika1;
+
+                        if (timeTableRowCounter == 0)
+                        {
+                            lbJunanKulku.Items.Add(juna.trainNumber + " Lähtöasema: " + juna.timeTableRows[0].stationShortCode );
+                        }
+
+                        if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
+                        {
+                            
+                            saapumisAika1 = juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("dd.MM.yyyy HH.mm");
+                            saapumisAika = DateTime.ParseExact(saapumisAika1, "dd.MM.yyyy HH.mm", System.Globalization.CultureInfo.InvariantCulture);
+
+                           
+
+                            for (int j = 0; j < juna.timeTableRows.Count; j++)
+                            {
+
+                                if (juna.timeTableRows[timeTableRowCounter].stationShortCode == juna.timeTableRows[j].stationShortCode)
+                                {
+
+                                    if (juna.timeTableRows[j].type == "DEPARTURE")
+                                    {
+                                        lähtöAika1 = juna.timeTableRows[j].scheduledTime.ToString("dd.MM.yyyy HH.mm");
+                                        lähtöAika = DateTime.ParseExact(lähtöAika1, "dd.MM.yyyy HH.mm", System.Globalization.CultureInfo.InvariantCulture);
+                                    }
+
+                                }
+                            }                            
+
+                        TimeSpan pysähdysAika = lähtöAika - saapumisAika;                        
+
+                            lbJunanKulku.Items.Add(juna.trainNumber + " " + juna.timeTableRows[timeTableRowCounter].stationShortCode + " " + pysähdysAika);
+
+                        }
+                                                                      
+                    }
+
+                    timeTableRowCounter++;
+                }
+                
+                    lbJunanKulku.Items.Add(juna.trainNumber + " Päätösasema: " + juna.timeTableRows[timeTableRowCounter].stationShortCode);                
+            }
+
+        }
     }
 }

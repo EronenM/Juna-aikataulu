@@ -82,11 +82,11 @@ namespace RataDigiTraffic
 
         public List<Juna> JunanAsemat(string departure_date, int train_number)
         {
-            departure_date = "2019-01-29";
-            train_number = 175;
+            departure_date = "2019-01-30";
+            train_number = 273;
 
             string json = "";
-            string url = $"https://rata.digitraffic.fi//api/v1/train-tracking/{departure_date}/{train_number}";
+            string url = $"https://rata.digitraffic.fi/api/v1/trains/{departure_date}/{train_number}";
 
 
             using (var client = new HttpClient())
