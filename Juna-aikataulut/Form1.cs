@@ -37,11 +37,13 @@ namespace Juna_aikataulut
 
         private void bHae_Click(object sender, EventArgs e)
         {
+            //Testi arvot. Voi poistaa
             string date = "2019-01-30";
             int nro = 273;
             juniaAsemalla(date, nro);
 
         }
+        // LisBox johon tulostetaan asemat joissa juna pysähtyy
 
         private void lb_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -96,7 +98,8 @@ namespace Juna_aikataulut
                                 }
                             }                            
 
-                        TimeSpan pysähdysAika = lähtöAika - saapumisAika;                        
+                        TimeSpan pysähdysAika = lähtöAika - saapumisAika;
+                           /* pysähdysAika.ToString("HH.mm")*/;
 
                             lbJunanKulku.Items.Add(juna.trainNumber + " " + juna.timeTableRows[timeTableRowCounter].stationShortCode + " " + pysähdysAika);
 
