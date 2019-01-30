@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bHae = new System.Windows.Forms.Button();
             this.lMistä = new System.Windows.Forms.Label();
             this.tbMistä = new System.Windows.Forms.TextBox();
             this.tbMinne = new System.Windows.Forms.TextBox();
             this.lMinne = new System.Windows.Forms.Label();
             this.lbTulos = new System.Windows.Forms.ListBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // bHae
             // 
             this.bHae.BackColor = System.Drawing.Color.Red;
-            this.bHae.Location = new System.Drawing.Point(455, 40);
+            this.bHae.Location = new System.Drawing.Point(352, 40);
             this.bHae.Name = "bHae";
             this.bHae.Size = new System.Drawing.Size(176, 47);
             this.bHae.TabIndex = 0;
@@ -50,7 +53,7 @@
             // lMistä
             // 
             this.lMistä.AutoSize = true;
-            this.lMistä.Location = new System.Drawing.Point(26, 21);
+            this.lMistä.Location = new System.Drawing.Point(18, 21);
             this.lMistä.Name = "lMistä";
             this.lMistä.Size = new System.Drawing.Size(41, 17);
             this.lMistä.TabIndex = 1;
@@ -59,16 +62,20 @@
             // 
             // tbMistä
             // 
+            this.tbMistä.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbMistä.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMistä.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tbMistä.Location = new System.Drawing.Point(18, 52);
+            this.tbMistä.Location = new System.Drawing.Point(21, 52);
             this.tbMistä.Name = "tbMistä";
             this.tbMistä.Size = new System.Drawing.Size(131, 22);
             this.tbMistä.TabIndex = 2;
             // 
             // tbMinne
             // 
+            this.tbMinne.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tbMinne.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMinne.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tbMinne.Location = new System.Drawing.Point(228, 52);
+            this.tbMinne.Location = new System.Drawing.Point(173, 52);
             this.tbMinne.Name = "tbMinne";
             this.tbMinne.Size = new System.Drawing.Size(131, 22);
             this.tbMinne.TabIndex = 4;
@@ -76,7 +83,7 @@
             // lMinne
             // 
             this.lMinne.AutoSize = true;
-            this.lMinne.Location = new System.Drawing.Point(236, 21);
+            this.lMinne.Location = new System.Drawing.Point(170, 21);
             this.lMinne.Name = "lMinne";
             this.lMinne.Size = new System.Drawing.Size(46, 17);
             this.lMinne.TabIndex = 3;
@@ -86,10 +93,15 @@
             // 
             this.lbTulos.FormattingEnabled = true;
             this.lbTulos.ItemHeight = 16;
-            this.lbTulos.Location = new System.Drawing.Point(21, 168);
+            this.lbTulos.Location = new System.Drawing.Point(21, 88);
             this.lbTulos.Name = "lbTulos";
-            this.lbTulos.Size = new System.Drawing.Size(337, 180);
+            this.lbTulos.Size = new System.Drawing.Size(283, 404);
             this.lbTulos.TabIndex = 6;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
             // Form1
             // 
@@ -105,6 +117,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +131,7 @@
         private System.Windows.Forms.TextBox tbMinne;
         private System.Windows.Forms.Label lMinne;
         private System.Windows.Forms.ListBox lbTulos;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
