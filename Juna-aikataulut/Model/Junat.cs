@@ -41,12 +41,10 @@ namespace RataDigiTraffic.Model
 
     public class Syy
     {
-
         //Syytiedot kuvaavat syitä miksi juna oli myöhässä tai etuajassa pysähdyksellä.Kaikkia syyluokkia ja -tietoja ei julkaista.
         public string categoryCodeId;
         public string categoryCode;
         public string detailedCategoryCodeId;
         public string detailedCategoryCode;
-
     }
 }

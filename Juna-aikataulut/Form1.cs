@@ -87,7 +87,7 @@ namespace Juna_aikataulut
                 counter = 0;
             }
         }
-
-
     }
 }
+
+
