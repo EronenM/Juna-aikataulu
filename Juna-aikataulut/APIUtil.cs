@@ -42,9 +42,11 @@ namespace RataDigiTraffic
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-            List<Juna> res;
+            List<Juna> res = new List<Juna>();
+
             res = JsonConvert.DeserializeObject<List<Juna>>(json);
             return res;
+
         }
     }
 }
