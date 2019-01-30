@@ -50,7 +50,7 @@
             // lMistä
             // 
             this.lMistä.AutoSize = true;
-            this.lMistä.Location = new System.Drawing.Point(26, 21);
+            this.lMistä.Location = new System.Drawing.Point(18, 21);
             this.lMistä.Name = "lMistä";
             this.lMistä.Size = new System.Drawing.Size(41, 17);
             this.lMistä.TabIndex = 1;
@@ -62,7 +62,7 @@
             this.tbMistä.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbMistä.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMistä.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tbMistä.Location = new System.Drawing.Point(18, 52);
+            this.tbMistä.Location = new System.Drawing.Point(21, 52);
             this.tbMistä.Name = "tbMistä";
             this.tbMistä.Size = new System.Drawing.Size(131, 22);
             this.tbMistä.TabIndex = 2;
@@ -72,7 +72,7 @@
             this.tbMinne.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbMinne.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMinne.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tbMinne.Location = new System.Drawing.Point(228, 52);
+            this.tbMinne.Location = new System.Drawing.Point(173, 52);
             this.tbMinne.Name = "tbMinne";
             this.tbMinne.Size = new System.Drawing.Size(131, 22);
             this.tbMinne.TabIndex = 4;
@@ -80,7 +80,7 @@
             // lMinne
             // 
             this.lMinne.AutoSize = true;
-            this.lMinne.Location = new System.Drawing.Point(236, 21);
+            this.lMinne.Location = new System.Drawing.Point(170, 21);
             this.lMinne.Name = "lMinne";
             this.lMinne.Size = new System.Drawing.Size(46, 17);
             this.lMinne.TabIndex = 3;
@@ -90,9 +90,9 @@
             // 
             this.lbTulos.FormattingEnabled = true;
             this.lbTulos.ItemHeight = 16;
-            this.lbTulos.Location = new System.Drawing.Point(21, 168);
+            this.lbTulos.Location = new System.Drawing.Point(21, 88);
             this.lbTulos.Name = "lbTulos";
-            this.lbTulos.Size = new System.Drawing.Size(337, 180);
+            this.lbTulos.Size = new System.Drawing.Size(283, 404);
             this.lbTulos.TabIndex = 6;
             // 
             // Form1
