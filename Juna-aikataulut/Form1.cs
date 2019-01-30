@@ -42,7 +42,6 @@ namespace Juna_aikataulut
             return paikat;
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
