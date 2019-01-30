@@ -54,10 +54,11 @@ namespace Juna_aikataulut
 
         private void bHae_Click(object sender, EventArgs e)
         {
+     
             //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
             //selvitä vielä tuo First(), miksi se tarvitaan?
-            string lähtöasema = paikat.Where(p => p.stationName == tbMistä.Text).First().stationShortCode;
-            string kohdeasema = paikat.Where(p => p.stationName == tbMinne.Text).First().stationShortCode;
+            string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+            string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
 
             tulostaJunatVälillä(lähtöasema, kohdeasema);
         }
@@ -82,5 +83,16 @@ namespace Juna_aikataulut
                 counter = 0;
             }
         }
+
+        //private void tbMistä_Leave(object sender, EventArgs e)
+        //{
+        //    if(tbMistä.Text.Length != 0)
+        //    {
+        //        if (paikat.  Contains(tbMistä.Text.ToLower()).First().stationShortCode)
+        //        {
+
+        //        }
+        //    }
+        //}
     }
 }
