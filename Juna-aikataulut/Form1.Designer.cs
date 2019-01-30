@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.bHae = new System.Windows.Forms.Button();
             this.lMistä = new System.Windows.Forms.Label();
             this.tbMistä = new System.Windows.Forms.TextBox();
             this.tbMinne = new System.Windows.Forms.TextBox();
             this.lMinne = new System.Windows.Forms.Label();
             this.lbTulos = new System.Windows.Forms.ListBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // bHae
@@ -98,11 +95,6 @@
             this.lbTulos.Size = new System.Drawing.Size(283, 404);
             this.lbTulos.TabIndex = 6;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.errorProvider1.ContainerControl = this;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -117,7 +109,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,7 +122,6 @@
         private System.Windows.Forms.TextBox tbMinne;
         private System.Windows.Forms.Label lMinne;
         private System.Windows.Forms.ListBox lbTulos;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

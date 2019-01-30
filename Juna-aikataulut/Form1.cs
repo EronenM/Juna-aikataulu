@@ -30,7 +30,7 @@ namespace Juna_aikataulut
             APIUtil rata = new APIUtil();
             //laitetaan paikka listaan rata-luokkainstanssin Liikennepaikat-metodilla kaikki mahdolliset asemaoliot
             paikat = rata.Liikennepaikat();
-            //käydään paikat listaa läpi ja lisätään acSourseen kaikki itemit, joiden tyyppin on "STATION"
+            //käydään paikat listaa läpi ja lisätään acSourseen kaikki itemit, joiden tyyppi on "STATION"
             foreach (var item in paikat.Where(p => p.type == "STATION"))
             {
                 acSource.Add(item.stationName);
@@ -72,9 +72,6 @@ namespace Juna_aikataulut
             }
         }
 
-
-
-
         private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)
         {
             APIUtil rata = new APIUtil();
@@ -96,15 +93,6 @@ namespace Juna_aikataulut
             }
         }
 
-        //private void tbMistä_Leave(object sender, EventArgs e)
-        //{
-        //    if(tbMistä.Text.Length != 0)
-        //    {
-        //        if (paikat.  Contains(tbMistä.Text.ToLower()).First().stationShortCode)
-        //        {
 
-        //        }
-        //    }
-        //}
     }
 }
