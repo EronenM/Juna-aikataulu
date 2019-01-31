@@ -28,6 +28,7 @@ namespace Juna_aikataulut
         // ominaisuus ei vielä saatavilla
         //List<Liikennepaikka> automaattisyöttöasemat;
 
+            // Mistä ja minne kenttien automaattinen ennakoivateksti
         private List<Liikennepaikka> tulostaAsemat()
         {
             //luodaan autocomplete olio acSource
@@ -64,6 +65,7 @@ namespace Juna_aikataulut
 
             string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
             string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
+
             tulostaJunatVälillä(lähtöasema, kohdeasema);
 
             junaMistäMinne[0] = lähtöasema;
@@ -109,7 +111,7 @@ namespace Juna_aikataulut
                     counter++;
                 }
 
-                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " + " " + j.timeTableRows[counter].scheduledTime.ToString("yyyy-MM-dd HH:mm")/*.ToLongTimeString()*/);
+                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + "\t " + j.timeTableRows[counter].scheduledTime.ToString("yyyy-MM-dd \t HH:mm"));
                 counter = 0;
             }
 
@@ -160,7 +162,7 @@ namespace Juna_aikataulut
                         DateTime saapumisAika = new DateTime();
                         DateTime lähtöAika = new DateTime();
 
-                        //  Lähtöaseman tulostus
+                        //  Ensimmäisen aseman ja junan tulostus
                         if (timeTableRowCounter == 0)
                         {
                             lbJunanKulku.Items.Add("Junan Numero: " + juna.trainNumber + "\t Lähtöasema: " + juna.timeTableRows[0].stationShortCode);
@@ -168,6 +170,7 @@ namespace Juna_aikataulut
                         //  Junan asemalle saapumisajan noukinta ja aseman tulostus
                         if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
                         {
+                           
                             if (juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0])
                             {
                                 lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("HH:mm")}  <= Nouse täältä kyytiin");

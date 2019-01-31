@@ -13,6 +13,7 @@ namespace RataDigiTraffic
     public class APIUtil
 
     {
+        // tarvitaan hakemaan kaikki asemat suomessa
         public List<Liikennepaikka> Liikennepaikat()
         {
             string json = "";
@@ -28,6 +29,7 @@ namespace RataDigiTraffic
             return res;
         }
 
+        // tällä haetaan kaikki junat välillä mistä - minne
         public List<Juna> JunatVälillä(string mistä, string minne)
         {
             string json = "";
