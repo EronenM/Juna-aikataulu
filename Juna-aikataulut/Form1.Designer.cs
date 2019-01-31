@@ -73,6 +73,7 @@
             this.tbMistä.Name = "tbMistä";
             this.tbMistä.Size = new System.Drawing.Size(131, 22);
             this.tbMistä.TabIndex = 2;
+            //this.tbMistä.Leave += new System.EventHandler(this.tbMistä_Leave);
             // 
             // tbMinne
             // 

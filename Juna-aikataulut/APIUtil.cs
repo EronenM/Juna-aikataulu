@@ -41,6 +41,12 @@ namespace RataDigiTraffic
                 json = responseString;
             }
             List<Juna> res;
+
+            if (json.Contains("TRAIN_NOT_FOUND") == true)
+            {
+            return null;
+            }
+
             res = JsonConvert.DeserializeObject<List<Juna>>(json);
             return res;
         }
