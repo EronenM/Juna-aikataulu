@@ -38,15 +38,16 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lbJunanKulku = new System.Windows.Forms.ListBox();
             this.bVR = new System.Windows.Forms.Button();
-            this.bSiirryJunat = new System.Windows.Forms.Button();
             this.bValitseJuna = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // bHae
             // 
-            this.bHae.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.bHae.Location = new System.Drawing.Point(352, 40);
+            this.bHae.AllowDrop = true;
+            this.bHae.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(215)))), ((int)(((byte)(144)))));
+            this.bHae.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.bHae.Location = new System.Drawing.Point(381, 88);
             this.bHae.Name = "bHae";
             this.bHae.Size = new System.Drawing.Size(176, 47);
             this.bHae.TabIndex = 0;
@@ -68,7 +69,7 @@
             this.tbMistä.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tbMistä.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMistä.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tbMistä.Location = new System.Drawing.Point(21, 52);
+            this.tbMistä.Location = new System.Drawing.Point(21, 41);
             this.tbMistä.Name = "tbMistä";
             this.tbMistä.Size = new System.Drawing.Size(131, 22);
             this.tbMistä.TabIndex = 2;
@@ -78,7 +79,7 @@
             this.tbMinne.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbMinne.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tbMinne.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tbMinne.Location = new System.Drawing.Point(173, 52);
+            this.tbMinne.Location = new System.Drawing.Point(173, 41);
             this.tbMinne.Name = "tbMinne";
             this.tbMinne.Size = new System.Drawing.Size(131, 22);
             this.tbMinne.TabIndex = 4;
@@ -98,7 +99,7 @@
             this.lbTulos.ItemHeight = 16;
             this.lbTulos.Location = new System.Drawing.Point(21, 88);
             this.lbTulos.Name = "lbTulos";
-            this.lbTulos.Size = new System.Drawing.Size(283, 404);
+            this.lbTulos.Size = new System.Drawing.Size(283, 372);
             this.lbTulos.TabIndex = 6;
             // 
             // errorProvider1
@@ -110,35 +111,27 @@
             // 
             this.lbJunanKulku.FormattingEnabled = true;
             this.lbJunanKulku.ItemHeight = 16;
-            this.lbJunanKulku.Location = new System.Drawing.Point(595, 88);
+            this.lbJunanKulku.Location = new System.Drawing.Point(618, 88);
             this.lbJunanKulku.Name = "lbJunanKulku";
-            this.lbJunanKulku.Size = new System.Drawing.Size(278, 372);
+            this.lbJunanKulku.Size = new System.Drawing.Size(373, 372);
             this.lbJunanKulku.TabIndex = 7;
             // 
             // bVR
             // 
-            this.bVR.Location = new System.Drawing.Point(754, 12);
+            this.bVR.Location = new System.Drawing.Point(873, 33);
             this.bVR.Name = "bVR";
-            this.bVR.Size = new System.Drawing.Size(118, 40);
+            this.bVR.Size = new System.Drawing.Size(118, 38);
             this.bVR.TabIndex = 8;
             this.bVR.Text = "Siirry VR";
             this.bVR.UseVisualStyleBackColor = true;
             this.bVR.Click += new System.EventHandler(this.bVR_Click);
             // 
-            // bSiirryJunat
-            // 
-            this.bSiirryJunat.Location = new System.Drawing.Point(623, 13);
-            this.bSiirryJunat.Name = "bSiirryJunat";
-            this.bSiirryJunat.Size = new System.Drawing.Size(116, 38);
-            this.bSiirryJunat.TabIndex = 9;
-            this.bSiirryJunat.Text = "Siirry junat.net";
-            this.bSiirryJunat.UseVisualStyleBackColor = true;
-            this.bSiirryJunat.Click += new System.EventHandler(this.bSiirryJunat_Click);
-            // 
             // bValitseJuna
             // 
-            this.bValitseJuna.BackColor = System.Drawing.Color.LawnGreen;
-            this.bValitseJuna.Location = new System.Drawing.Point(352, 133);
+            this.bValitseJuna.AllowDrop = true;
+            this.bValitseJuna.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(215)))), ((int)(((byte)(144)))));
+            this.bValitseJuna.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.bValitseJuna.Location = new System.Drawing.Point(381, 212);
             this.bValitseJuna.Name = "bValitseJuna";
             this.bValitseJuna.Size = new System.Drawing.Size(176, 47);
             this.bValitseJuna.TabIndex = 10;
@@ -150,9 +143,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 523);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(255)))), ((int)(((byte)(241)))));
+            this.ClientSize = new System.Drawing.Size(1050, 563);
             this.Controls.Add(this.bValitseJuna);
-            this.Controls.Add(this.bSiirryJunat);
             this.Controls.Add(this.bVR);
             this.Controls.Add(this.lbJunanKulku);
             this.Controls.Add(this.lbTulos);
@@ -162,7 +155,7 @@
             this.Controls.Add(this.lMistä);
             this.Controls.Add(this.bHae);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Juna-aikataulut";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -180,7 +173,6 @@
         private System.Windows.Forms.ListBox lbTulos;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ListBox lbJunanKulku;
-        private System.Windows.Forms.Button bSiirryJunat;
         private System.Windows.Forms.Button bVR;
         private System.Windows.Forms.Button bValitseJuna;
     }

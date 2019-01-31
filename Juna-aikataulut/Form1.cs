@@ -42,6 +42,8 @@ namespace Juna_aikataulut
             }
             //näillä saadaan ennakoivateksti näkymään tbMistä ja tbMinne kenttiin
             tbMistä.AutoCompleteCustomSource = acSource;
+
+
             tbMinne.AutoCompleteCustomSource = acSource;
             //palautetaan paikat lista niin siihen päästää käsiksi myöhemmin
             return paikat;
@@ -52,25 +54,17 @@ namespace Juna_aikataulut
 
         }
 
-        // Lähtöpäivämäärän asetus
-        //private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        //{
-        //    DateTime pvm = dateTimePicker1.Value;
-        //    this.lbJunanKulku.Text = dateTimePicker1.Value.ToString("HH:mm");
-        //    string departureTime = lbJunanKulku.Text;
-
-
-        //}
         string[] junaMistäMinne = new string[2];
         public string[] MistäMinne()
         {
-
-        string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
-        string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
-        tulostaJunatVälillä(lähtöasema, kohdeasema);
+            
+            string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+            string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
+            tulostaJunatVälillä(lähtöasema, kohdeasema);
             
             junaMistäMinne[0] = lähtöasema;
             junaMistäMinne[1] = kohdeasema;
+            
 
             return junaMistäMinne;
         }
@@ -79,22 +73,16 @@ namespace Juna_aikataulut
         private void bHae_Click(object sender, EventArgs e)
         {
             lbTulos.Items.Clear();
-            MistäMinne();
-
-            //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
-            //selvitä vielä tuo First(), miksi se tarvitaan?
             try
             {
-                //string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
-                //string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
-                //tulostaJunatVälillä(lähtöasema, kohdeasema);
-                
+                MistäMinne();
             }
             catch (Exception)
             {
+
                 lbTulos.Items.Add("Kirjoittamaasi asemaa ei ole");
                 lbTulos.Items.Add("tai valitsemiesi asemien yhteyttä ei ole olemassa");
-                
+
             }
 
         }
@@ -122,11 +110,7 @@ namespace Juna_aikataulut
 
             // return asemat;
         }
-
-        private void bSiirryJunat_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.junat.net/fi/");
-        }
+               
 
         private void bVR_Click(object sender, EventArgs e)
         {
@@ -135,21 +119,22 @@ namespace Juna_aikataulut
 
         private void bValitseJuna_Click(object sender, EventArgs e)
         {
+            lbJunanKulku.Items.Clear();
             try
             {
                 if (lbTulos.Items.Count > 0)
                 {
                     string valittuJuna = lbTulos.SelectedItem.ToString();
                     string [] junanSplit = valittuJuna.Split(' ');
-                    string junanAika = junanSplit[3];/*"2019-01-30";*/
+                    string junanAika = junanSplit[3];
                     int junanNro = int.Parse(junanSplit[0]);
                    
                     juniaAsemalla( junanAika, junanNro);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);  //exception handling, muokattavissa
+                lbJunanKulku.Items.Add("Ei valittavia junia");
             }           
 
         }
@@ -173,39 +158,52 @@ namespace Juna_aikataulut
                         //  Lähtöaseman tulostus
                         if (timeTableRowCounter == 0)
                         {
-                            lbJunanKulku.Items.Add(juna.trainNumber + " Lähtöasema: " + juna.timeTableRows[0].stationShortCode);
+                            lbJunanKulku.Items.Add("Junan Numero: "+juna.trainNumber + "\t Lähtöasema: " + juna.timeTableRows[0].stationShortCode);
                         }
                                                                        
                                                                             // ARMOTONTA TESTAUSTA
 
-                        if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL" && juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0] )
-                        {
-                            saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
+                        //if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL" && juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0] )
+                        //{
 
-                            //  Junan asemalta lähtöajan noukinta. 
-                            //  Etsii ARRIVAL-kohdan stationShortCoden kanssa matchaavan DEPARTURE ajan 
-                            for (int j = 0; j < juna.timeTableRows.Count; j++)
-                            {
+                        //    saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
 
-                                if (juna.timeTableRows[timeTableRowCounter].stationShortCode == juna.timeTableRows[j].stationShortCode)
-                                {
-                                    if (juna.timeTableRows[j].type == "DEPARTURE")
-                                    {
-                                        lähtöAika = juna.timeTableRows[j].scheduledTime;
-                                    }
-                                }
-                            }
-                            //  Asemakohtaisen odotusajan laskenta
-                            TimeSpan pysähdysAika = lähtöAika - saapumisAika;
+                        //    //  Junan asemalta lähtöajan noukinta. 
+                        //    //  Etsii ARRIVAL-kohdan stationShortCoden kanssa matchaavan DEPARTURE ajan 
+                        //    for (int j = 0; j < juna.timeTableRows.Count; j++)
+                        //    {
 
-                            //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
-                            lbJunanKulku.Items.Add($"{juna.trainNumber} Nouse täältä: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
-                        }
-                        else
-                        {
+                        //        if (juna.timeTableRows[timeTableRowCounter].stationShortCode == juna.timeTableRows[j].stationShortCode)
+                        //        {
+                        //            if (juna.timeTableRows[j].type == "DEPARTURE")
+                        //            {
+                        //                lähtöAika = juna.timeTableRows[j].scheduledTime;
+                        //            }
+                        //        }
+                        //    }
+
+                        //    //  Asemakohtaisen odotusajan laskenta
+                        //    TimeSpan pysähdysAika = lähtöAika - saapumisAika;
+
+                        //    //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
+                        //    lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("HH:mm")} Pysähdysaika: {pysähdysAika.TotalMinutes}min  <= Nouse täältä kyytiin");
+                        //}
+                        
+                        
                             //  Junan asemalle saapumisajan noukinta ja aseman tulostus
                             if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
                             {
+                                if (juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0])
+                                {
+                                    lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("HH:mm")}  <= Nouse täältä kyytiin");
+                                }
+                                
+
+                                if (juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[1])
+                                {
+                                    lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("HH:mm")}  <= Olet Perillä");
+
+                                }
                                 saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
 
                                 //  Junan asemalta lähtöajan noukinta. 
@@ -219,6 +217,7 @@ namespace Juna_aikataulut
                                         {
                                             lähtöAika = juna.timeTableRows[j].scheduledTime;
                                         }
+                                        
                                     }
                                 }
 
@@ -226,15 +225,15 @@ namespace Juna_aikataulut
                                 TimeSpan pysähdysAika = lähtöAika - saapumisAika;
 
                                 //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
-                                lbJunanKulku.Items.Add($"{juna.trainNumber} Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
+                                lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Pysähdysaika: {pysähdysAika.TotalMinutes}min");
                             }
-                        }
+                        
                     }
 
                     timeTableRowCounter++;
                 }
                 // Pääteaseman tulostus
-                lbJunanKulku.Items.Add(juna.trainNumber + " Päätösasema: " + juna.timeTableRows[timeTableRowCounter].stationShortCode);
+                lbJunanKulku.Items.Add("Päätösasema: " + juna.timeTableRows[timeTableRowCounter].stationShortCode);
             }
         }
        
