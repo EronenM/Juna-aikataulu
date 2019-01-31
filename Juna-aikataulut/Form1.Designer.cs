@@ -37,12 +37,16 @@
             this.lbTulos = new System.Windows.Forms.ListBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lbJunanKulku = new System.Windows.Forms.ListBox();
+            this.bVR = new System.Windows.Forms.Button();
+            this.bSiirryJunat = new System.Windows.Forms.Button();
+            this.bValitseJuna = new System.Windows.Forms.Button();
+            this.lbValittuJuna = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // bHae
             // 
-            this.bHae.BackColor = System.Drawing.Color.Red;
+            this.bHae.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.bHae.Location = new System.Drawing.Point(352, 40);
             this.bHae.Name = "bHae";
             this.bHae.Size = new System.Drawing.Size(176, 47);
@@ -112,11 +116,55 @@
             this.lbJunanKulku.Size = new System.Drawing.Size(278, 372);
             this.lbJunanKulku.TabIndex = 7;
             // 
+            // bVR
+            // 
+            this.bVR.Location = new System.Drawing.Point(754, 12);
+            this.bVR.Name = "bVR";
+            this.bVR.Size = new System.Drawing.Size(118, 40);
+            this.bVR.TabIndex = 8;
+            this.bVR.Text = "Siirry VR";
+            this.bVR.UseVisualStyleBackColor = true;
+            this.bVR.Click += new System.EventHandler(this.bVR_Click);
+            // 
+            // bSiirryJunat
+            // 
+            this.bSiirryJunat.Location = new System.Drawing.Point(623, 13);
+            this.bSiirryJunat.Name = "bSiirryJunat";
+            this.bSiirryJunat.Size = new System.Drawing.Size(116, 38);
+            this.bSiirryJunat.TabIndex = 9;
+            this.bSiirryJunat.Text = "Siirry junat.net";
+            this.bSiirryJunat.UseVisualStyleBackColor = true;
+            this.bSiirryJunat.Click += new System.EventHandler(this.bSiirryJunat_Click);
+            // 
+            // bValitseJuna
+            // 
+            this.bValitseJuna.BackColor = System.Drawing.Color.LawnGreen;
+            this.bValitseJuna.Location = new System.Drawing.Point(352, 133);
+            this.bValitseJuna.Name = "bValitseJuna";
+            this.bValitseJuna.Size = new System.Drawing.Size(176, 47);
+            this.bValitseJuna.TabIndex = 10;
+            this.bValitseJuna.Text = "Valitse Juna";
+            this.bValitseJuna.UseVisualStyleBackColor = false;
+            this.bValitseJuna.Click += new System.EventHandler(this.bValitseJuna_Click);
+            // 
+            // lbValittuJuna
+            // 
+            this.lbValittuJuna.FormattingEnabled = true;
+            this.lbValittuJuna.ItemHeight = 16;
+            this.lbValittuJuna.Location = new System.Drawing.Point(356, 209);
+            this.lbValittuJuna.Name = "lbValittuJuna";
+            this.lbValittuJuna.Size = new System.Drawing.Size(171, 244);
+            this.lbValittuJuna.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 523);
+            this.Controls.Add(this.lbValittuJuna);
+            this.Controls.Add(this.bValitseJuna);
+            this.Controls.Add(this.bSiirryJunat);
+            this.Controls.Add(this.bVR);
             this.Controls.Add(this.lbJunanKulku);
             this.Controls.Add(this.lbTulos);
             this.Controls.Add(this.tbMinne);
@@ -143,6 +191,10 @@
         private System.Windows.Forms.ListBox lbTulos;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ListBox lbJunanKulku;
+        private System.Windows.Forms.Button bSiirryJunat;
+        private System.Windows.Forms.Button bVR;
+        private System.Windows.Forms.Button bValitseJuna;
+        private System.Windows.Forms.ListBox lbValittuJuna;
     }
 }
 

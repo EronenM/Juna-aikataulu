@@ -28,10 +28,13 @@ namespace Juna_aikataulut
         {
             //luodaan autocomplete olio acSource
             AutoCompleteStringCollection acSource = new AutoCompleteStringCollection();
+
             //luodaan APIUtil olio rata, jotta päästään APIUtil metodeihin käsiksi
             APIUtil rata = new APIUtil();
+
             //laitetaan paikka listaan rata-luokkainstanssin Liikennepaikat-metodilla kaikki mahdolliset asemaoliot
             paikat = rata.Liikennepaikat();
+
             //käydään paikat listaa läpi ja lisätään acSourseen kaikki itemit, joiden tyyppin on "STATION"
             foreach (var item in paikat.Where(p => p.type == "STATION"))
             {
@@ -59,23 +62,6 @@ namespace Juna_aikataulut
 
         //}
         
-            //tämä kommentoitu pois, että saadaan vapautettua bHae_Click
-        //private void bHae_Click(object sender, EventArgs e)
-        //{
-        //    //Testi arvot. POISTA FINALISTA
-        //    string date = "2019-01-30";
-        //    int nro = 265;
-
-        //    // Siirretään junanvalitsin nappiin FINALISSA
-        //    juniaAsemalla(date, nro);
-
-        //}
-       
-        // LisBox johon tulostetaan asemat joissa juna pysähtyy
-        private void lb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void juniaAsemalla(string date, int nro)
         {
@@ -100,7 +86,7 @@ namespace Juna_aikataulut
                             lbJunanKulku.Items.Add(juna.trainNumber + " Lähtöasema: " + juna.timeTableRows[0].stationShortCode);
                         }
 
-                        //  Junan asemalle saapumisajan noukinta
+                        //  Junan asemalle saapumisajan noukinta ja aseman tulostus
                         if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
                         {
                             saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
@@ -144,6 +130,7 @@ namespace Juna_aikataulut
                 string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
                 string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
                 tulostaJunatVälillä(lähtöasema, kohdeasema);
+                
             }
             catch (Exception)
             {
@@ -153,11 +140,12 @@ namespace Juna_aikataulut
             }
            
             //JUNIAASEMALLA METODINLAUKAISU ----> SIIRRÄ UUTEEN BUTTONIIN
-            juniaAsemalla(valittuPvm, valittuJuna);
+            //juniaAsemalla(valittuPvm, valittuJuna);
         }
-
+        
         private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)
         {
+            // string[] asemat = { lähtöasema, kohdeasema };
             APIUtil rata = new APIUtil();
 
             // tähän joku error -käsittely, jos junia ei löydy asemien välille
@@ -172,9 +160,47 @@ namespace Juna_aikataulut
                     counter++;
                 }
 
-                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " + j.departureDate.ToShortDateString() + " " + j.timeTableRows[counter].scheduledTime.ToLongTimeString());
+                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " + j.departureDate/*.ToShortDateString()*/ + " " + j.timeTableRows[counter].scheduledTime.ToString("yyyy-MM-dd")/*.ToLongTimeString()*/);
                 counter = 0;
             }
+
+            // return asemat;
+        }
+
+        private void bSiirryJunat_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.junat.net/fi/");
+        }
+
+        private void bVR_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.vr.fi/");
+        }
+
+        private void bValitseJuna_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lbTulos.Items.Count > 0)
+                {
+                    string valittuJuna = lbTulos.SelectedItem.ToString();
+                    string [] junanSplit = valittuJuna.Split(' ');
+                    string junanAika = junanSplit[4];/*"2019-01-30";*/
+                    int junanNro = int.Parse(junanSplit[0]);
+                    // lbValittuJuna.Items.Add(lbTulos.SelectedItem.ToString());
+                    // lbTulos.Items.Remove(lbTulos.SelectedItem);
+                    juniaAsemalla( junanAika, junanNro);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);  //exception handling, muokattavissa
+            }
+            //valitsee ensimmäisen itemin lbtuloksesta.
+            if (lbTulos.Items.Count > 0)
+                lbTulos.SelectedIndex = 0;
+            lbValittuJuna.SelectedIndex = lbValittuJuna.Items.Count - 1;  // tähän voidaan myös liittää nappi jolla saadaan poistettua valittu item
+
         }
 
         //private void tbMistä_Leave(object sender, EventArgs e)
