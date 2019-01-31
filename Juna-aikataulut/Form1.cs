@@ -20,7 +20,6 @@ namespace Juna_aikataulut
             
             InitializeComponent();
             tulostaAsemat();
-                       
         }
 
         List<Liikennepaikka> paikat;
@@ -62,20 +61,33 @@ namespace Juna_aikataulut
 
 
         //}
-        
+        string[] junaMistäMinne = new string[2];
+        public string[] MistäMinne()
+        {
 
-        
-        
+        string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+        string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
+        tulostaJunatVälillä(lähtöasema, kohdeasema);
+            
+            junaMistäMinne[0] = lähtöasema;
+            junaMistäMinne[1] = kohdeasema;
+
+            return junaMistäMinne;
+        }
+
+
         private void bHae_Click(object sender, EventArgs e)
         {
             lbTulos.Items.Clear();
+            MistäMinne();
+
             //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
             //selvitä vielä tuo First(), miksi se tarvitaan?
             try
             {
-                string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
-                string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
-                tulostaJunatVälillä(lähtöasema, kohdeasema);
+                //string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+                //string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
+                //tulostaJunatVälillä(lähtöasema, kohdeasema);
                 
             }
             catch (Exception)
@@ -138,11 +150,7 @@ namespace Juna_aikataulut
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);  //exception handling, muokattavissa
-            }
-            //valitsee ensimmäisen itemin lbtuloksesta.
-            if (lbTulos.Items.Count > 0)
-                lbTulos.SelectedIndex = 0;
-            lbValittuJuna.SelectedIndex = lbValittuJuna.Items.Count - 1;  // tähän voidaan myös liittää nappi jolla saadaan poistettua valittu item
+            }           
 
         }
         private void juniaAsemalla(string date, int nro)
@@ -167,9 +175,10 @@ namespace Juna_aikataulut
                         {
                             lbJunanKulku.Items.Add(juna.trainNumber + " Lähtöasema: " + juna.timeTableRows[0].stationShortCode);
                         }
+                                                                       
+                                                                            // ARMOTONTA TESTAUSTA
 
-                        //  Junan asemalle saapumisajan noukinta ja aseman tulostus
-                        if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
+                        if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL" && juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0] )
                         {
                             saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
 
@@ -186,12 +195,39 @@ namespace Juna_aikataulut
                                     }
                                 }
                             }
-
                             //  Asemakohtaisen odotusajan laskenta
                             TimeSpan pysähdysAika = lähtöAika - saapumisAika;
 
                             //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
-                            lbJunanKulku.Items.Add($"{juna.trainNumber} Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
+                            lbJunanKulku.Items.Add($"{juna.trainNumber} Nouse täältä: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
+                        }
+                        else
+                        {
+                            //  Junan asemalle saapumisajan noukinta ja aseman tulostus
+                            if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
+                            {
+                                saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
+
+                                //  Junan asemalta lähtöajan noukinta. 
+                                //  Etsii ARRIVAL-kohdan stationShortCoden kanssa matchaavan DEPARTURE ajan 
+                                for (int j = 0; j < juna.timeTableRows.Count; j++)
+                                {
+
+                                    if (juna.timeTableRows[timeTableRowCounter].stationShortCode == juna.timeTableRows[j].stationShortCode)
+                                    {
+                                        if (juna.timeTableRows[j].type == "DEPARTURE")
+                                        {
+                                            lähtöAika = juna.timeTableRows[j].scheduledTime;
+                                        }
+                                    }
+                                }
+
+                                //  Asemakohtaisen odotusajan laskenta
+                                TimeSpan pysähdysAika = lähtöAika - saapumisAika;
+
+                                //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
+                                lbJunanKulku.Items.Add($"{juna.trainNumber} Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
+                            }
                         }
                     }
 
@@ -201,15 +237,6 @@ namespace Juna_aikataulut
                 lbJunanKulku.Items.Add(juna.trainNumber + " Päätösasema: " + juna.timeTableRows[timeTableRowCounter].stationShortCode);
             }
         }
-        //private void tbMistä_Leave(object sender, EventArgs e)
-        //{
-        //    if(tbMistä.Text.Length != 0)
-        //    {
-        //        if (paikat.  Contains(tbMistä.Text.ToLower()).First().stationShortCode)
-        //        {
-
-        //        }
-        //    }
-        //}
+       
     }
 }
