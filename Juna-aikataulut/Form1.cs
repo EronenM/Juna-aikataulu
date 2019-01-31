@@ -9,9 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RataDigiTraffic;
-using DigiTrafficTester;
-using RataDigiTraffic.Model;
 using System.Globalization;
 
 namespace Juna_aikataulut
@@ -22,6 +19,7 @@ namespace Juna_aikataulut
         {
             InitializeComponent();
             tulostaAsemat();
+            
         }
 
         List<Liikennepaikka> paikat;
@@ -60,17 +58,18 @@ namespace Juna_aikataulut
 
 
         //}
+        
+            //tämä kommentoitu pois, että saadaan vapautettua bHae_Click
+        //private void bHae_Click(object sender, EventArgs e)
+        //{
+        //    //Testi arvot. POISTA FINALISTA
+        //    string date = "2019-01-30";
+        //    int nro = 265;
 
-        private void bHae_Click(object sender, EventArgs e)
-        {
-            //Testi arvot. POISTA FINALISTA
-            string date = "2019-01-30";
-            int nro = 265;
+        //    // Siirretään junanvalitsin nappiin FINALISSA
+        //    juniaAsemalla(date, nro);
 
-            // Siirretään junanvalitsin nappiin FINALISSA
-            juniaAsemalla(date, nro);
-
-        }
+        //}
        
         // LisBox johon tulostetaan asemat joissa juna pysähtyy
         private void lb_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,13 +136,24 @@ namespace Juna_aikataulut
 
         private void bHae_Click(object sender, EventArgs e)
         {
-     
+            lbTulos.Items.Clear();
             //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
             //selvitä vielä tuo First(), miksi se tarvitaan?
-            string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
-            string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
-
-            tulostaJunatVälillä(lähtöasema, kohdeasema);
+            try
+            {
+                string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+                string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
+                tulostaJunatVälillä(lähtöasema, kohdeasema);
+            }
+            catch (Exception)
+            {
+                lbTulos.Items.Add("Kirjoittamaasi asemaa ei ole");
+                lbTulos.Items.Add("tai valitsemiesi asemien yhteyttä ei ole olemassa");
+                
+            }
+           
+            //JUNIAASEMALLA METODINLAUKAISU ----> SIIRRÄ UUTEEN BUTTONIIN
+            juniaAsemalla(valittuPvm, valittuJuna);
         }
 
         private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)

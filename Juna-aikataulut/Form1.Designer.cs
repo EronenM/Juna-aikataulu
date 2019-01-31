@@ -36,6 +36,7 @@
             this.lMinne = new System.Windows.Forms.Label();
             this.lbTulos = new System.Windows.Forms.ListBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbJunanKulku = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,6 @@
             this.lMistä.Size = new System.Drawing.Size(41, 17);
             this.lMistä.TabIndex = 1;
             this.lMistä.Text = "Mistä";
-            this.lMistä.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbMistä
             // 
@@ -103,11 +103,21 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // lbJunanKulku
+            // 
+            this.lbJunanKulku.FormattingEnabled = true;
+            this.lbJunanKulku.ItemHeight = 16;
+            this.lbJunanKulku.Location = new System.Drawing.Point(595, 88);
+            this.lbJunanKulku.Name = "lbJunanKulku";
+            this.lbJunanKulku.Size = new System.Drawing.Size(278, 372);
+            this.lbJunanKulku.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 523);
+            this.Controls.Add(this.lbJunanKulku);
             this.Controls.Add(this.lbTulos);
             this.Controls.Add(this.tbMinne);
             this.Controls.Add(this.lMinne);
@@ -132,6 +142,7 @@
         private System.Windows.Forms.Label lMinne;
         private System.Windows.Forms.ListBox lbTulos;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ListBox lbJunanKulku;
     }
 }
 
