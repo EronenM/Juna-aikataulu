@@ -17,9 +17,10 @@ namespace Juna_aikataulut
     {
         public Form1()
         {
+            
             InitializeComponent();
             tulostaAsemat();
-            
+                       
         }
 
         List<Liikennepaikka> paikat;
@@ -63,6 +64,87 @@ namespace Juna_aikataulut
         //}
         
 
+        
+        
+        private void bHae_Click(object sender, EventArgs e)
+        {
+            lbTulos.Items.Clear();
+            //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
+            //selvitä vielä tuo First(), miksi se tarvitaan?
+            try
+            {
+                string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
+                string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
+                tulostaJunatVälillä(lähtöasema, kohdeasema);
+                
+            }
+            catch (Exception)
+            {
+                lbTulos.Items.Add("Kirjoittamaasi asemaa ei ole");
+                lbTulos.Items.Add("tai valitsemiesi asemien yhteyttä ei ole olemassa");
+                
+            }
+
+        }
+        
+        private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)
+        {
+            // string[] asemat = { lähtöasema, kohdeasema };
+            APIUtil rata = new APIUtil();
+
+            // tähän joku error -käsittely, jos junia ei löydy asemien välille
+            List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
+
+            int counter = 0;
+
+            foreach (var j in junat)
+            {
+                while (j.timeTableRows[counter].stationShortCode != lähtöasema)
+                {
+                    counter++;
+                }
+
+                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " +  " " + j.timeTableRows[counter].scheduledTime.ToString("yyyy-MM-dd HH:mm")/*.ToLongTimeString()*/);
+                counter = 0;
+            }
+
+            // return asemat;
+        }
+
+        private void bSiirryJunat_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.junat.net/fi/");
+        }
+
+        private void bVR_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.vr.fi/");
+        }
+
+        private void bValitseJuna_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lbTulos.Items.Count > 0)
+                {
+                    string valittuJuna = lbTulos.SelectedItem.ToString();
+                    string [] junanSplit = valittuJuna.Split(' ');
+                    string junanAika = junanSplit[3];/*"2019-01-30";*/
+                    int junanNro = int.Parse(junanSplit[0]);
+                   
+                    juniaAsemalla( junanAika, junanNro);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);  //exception handling, muokattavissa
+            }
+            //valitsee ensimmäisen itemin lbtuloksesta.
+            if (lbTulos.Items.Count > 0)
+                lbTulos.SelectedIndex = 0;
+            lbValittuJuna.SelectedIndex = lbValittuJuna.Items.Count - 1;  // tähän voidaan myös liittää nappi jolla saadaan poistettua valittu item
+
+        }
         private void juniaAsemalla(string date, int nro)
         {
             APIUtil junanpysähdykset = new APIUtil();
@@ -79,7 +161,7 @@ namespace Juna_aikataulut
                     {
                         DateTime saapumisAika = new DateTime();
                         DateTime lähtöAika = new DateTime();
-                       
+
                         //  Lähtöaseman tulostus
                         if (timeTableRowCounter == 0)
                         {
@@ -107,7 +189,7 @@ namespace Juna_aikataulut
 
                             //  Asemakohtaisen odotusajan laskenta
                             TimeSpan pysähdysAika = lähtöAika - saapumisAika;
-                            
+
                             //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
                             lbJunanKulku.Items.Add($"{juna.trainNumber} Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
                         }
@@ -119,90 +201,6 @@ namespace Juna_aikataulut
                 lbJunanKulku.Items.Add(juna.trainNumber + " Päätösasema: " + juna.timeTableRows[timeTableRowCounter].stationShortCode);
             }
         }
-
-        private void bHae_Click(object sender, EventArgs e)
-        {
-            lbTulos.Items.Clear();
-            //asemiksi haetaan paikat listalta se asema, joka mätsää automaattisyötetyn nimen kanssa
-            //selvitä vielä tuo First(), miksi se tarvitaan?
-            try
-            {
-                string lähtöasema = paikat.Where(p => p.stationName.ToLower() == tbMistä.Text.ToLower()).First().stationShortCode;
-                string kohdeasema = paikat.Where(p => p.stationName.ToLower() == tbMinne.Text.ToLower()).First().stationShortCode;
-                tulostaJunatVälillä(lähtöasema, kohdeasema);
-                
-            }
-            catch (Exception)
-            {
-                lbTulos.Items.Add("Kirjoittamaasi asemaa ei ole");
-                lbTulos.Items.Add("tai valitsemiesi asemien yhteyttä ei ole olemassa");
-                
-            }
-           
-            //JUNIAASEMALLA METODINLAUKAISU ----> SIIRRÄ UUTEEN BUTTONIIN
-            //juniaAsemalla(valittuPvm, valittuJuna);
-        }
-        
-        private void tulostaJunatVälillä(string lähtöasema, string kohdeasema)
-        {
-            // string[] asemat = { lähtöasema, kohdeasema };
-            APIUtil rata = new APIUtil();
-
-            // tähän joku error -käsittely, jos junia ei löydy asemien välille
-            List<Juna> junat = rata.JunatVälillä(lähtöasema, kohdeasema);
-
-            int counter = 0;
-
-            foreach (var j in junat)
-            {
-                while (j.timeTableRows[counter].stationShortCode != lähtöasema)
-                {
-                    counter++;
-                }
-
-                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + " " + j.departureDate/*.ToShortDateString()*/ + " " + j.timeTableRows[counter].scheduledTime.ToString("yyyy-MM-dd")/*.ToLongTimeString()*/);
-                counter = 0;
-            }
-
-            // return asemat;
-        }
-
-        private void bSiirryJunat_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.junat.net/fi/");
-        }
-
-        private void bVR_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.vr.fi/");
-        }
-
-        private void bValitseJuna_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (lbTulos.Items.Count > 0)
-                {
-                    string valittuJuna = lbTulos.SelectedItem.ToString();
-                    string [] junanSplit = valittuJuna.Split(' ');
-                    string junanAika = junanSplit[4];/*"2019-01-30";*/
-                    int junanNro = int.Parse(junanSplit[0]);
-                    // lbValittuJuna.Items.Add(lbTulos.SelectedItem.ToString());
-                    // lbTulos.Items.Remove(lbTulos.SelectedItem);
-                    juniaAsemalla( junanAika, junanNro);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);  //exception handling, muokattavissa
-            }
-            //valitsee ensimmäisen itemin lbtuloksesta.
-            if (lbTulos.Items.Count > 0)
-                lbTulos.SelectedIndex = 0;
-            lbValittuJuna.SelectedIndex = lbValittuJuna.Items.Count - 1;  // tähän voidaan myös liittää nappi jolla saadaan poistettua valittu item
-
-        }
-
         //private void tbMistä_Leave(object sender, EventArgs e)
         //{
         //    if(tbMistä.Text.Length != 0)

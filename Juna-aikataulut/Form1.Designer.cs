@@ -40,7 +40,6 @@
             this.bVR = new System.Windows.Forms.Button();
             this.bSiirryJunat = new System.Windows.Forms.Button();
             this.bValitseJuna = new System.Windows.Forms.Button();
-            this.lbValittuJuna = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,21 +146,11 @@
             this.bValitseJuna.UseVisualStyleBackColor = false;
             this.bValitseJuna.Click += new System.EventHandler(this.bValitseJuna_Click);
             // 
-            // lbValittuJuna
-            // 
-            this.lbValittuJuna.FormattingEnabled = true;
-            this.lbValittuJuna.ItemHeight = 16;
-            this.lbValittuJuna.Location = new System.Drawing.Point(356, 209);
-            this.lbValittuJuna.Name = "lbValittuJuna";
-            this.lbValittuJuna.Size = new System.Drawing.Size(171, 244);
-            this.lbValittuJuna.TabIndex = 11;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 523);
-            this.Controls.Add(this.lbValittuJuna);
             this.Controls.Add(this.bValitseJuna);
             this.Controls.Add(this.bSiirryJunat);
             this.Controls.Add(this.bVR);
@@ -194,7 +183,6 @@
         private System.Windows.Forms.Button bSiirryJunat;
         private System.Windows.Forms.Button bVR;
         private System.Windows.Forms.Button bValitseJuna;
-        private System.Windows.Forms.ListBox lbValittuJuna;
     }
 }
 
