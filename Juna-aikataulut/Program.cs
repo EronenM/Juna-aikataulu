@@ -18,5 +18,19 @@ namespace Juna_aikataulut
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
     }
+
+
+    //// Ajan esitys eriteltynä Pitää tehdä funktio?
+    ///
+    //string pysähdysSiistitty /*= String.Format( CultureInfo.CurrentCulture, "Pysähdysaika: {0} tuntia, {1} minuuttia",pysähdysAika.Hours, pysähdysAika.Minutes)*/;
+    //if (pysähdysAika.TotalMinutes < 60)
+    //{
+    //    pysähdysSiistitty = String.Format("{0}min", pysähdysAika.Minutes);
+    //}
+    //else if(pysähdysAika.TotalMinutes > 60)
+    //{
+    //    pysähdysSiistitty = String.Format("{0}h {1}min", pysähdysAika.Hours, pysähdysAika.Minutes);
+    //}
 }
