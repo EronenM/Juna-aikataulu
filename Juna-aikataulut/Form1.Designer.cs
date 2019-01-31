@@ -58,7 +58,7 @@
             this.lbJunanKulku.ItemHeight = 16;
             this.lbJunanKulku.Location = new System.Drawing.Point(452, 169);
             this.lbJunanKulku.Name = "lbJunanKulku";
-            this.lbJunanKulku.Size = new System.Drawing.Size(266, 196);
+            this.lbJunanKulku.Size = new System.Drawing.Size(411, 196);
             this.lbJunanKulku.TabIndex = 10;
             this.lbJunanKulku.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
             // 
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 523);
+            this.ClientSize = new System.Drawing.Size(914, 523);
             this.Controls.Add(this.lbJunanKulku);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bHae);

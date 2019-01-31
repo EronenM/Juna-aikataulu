@@ -97,8 +97,7 @@ namespace Juna_aikataulut
 
                             //  Asemakohtaisen odotusajan laskenta
                             TimeSpan pysähdysAika = lähtöAika - saapumisAika;
-
-
+                            
                             //  lb Tulostus. POISTA {juna.trainNumber} FINALISTA
                             lbJunanKulku.Items.Add($"{juna.trainNumber} Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} Pysähdysaika: {pysähdysAika.TotalMinutes}min");
                         }
