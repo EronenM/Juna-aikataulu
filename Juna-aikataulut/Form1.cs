@@ -110,8 +110,9 @@ namespace Juna_aikataulut
                 {
                     counter++;
                 }
-
-                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + "\t " + j.timeTableRows[counter].scheduledTime.ToString("yyyy-MM-dd \t HH:mm"));
+                DateTime muutettuAika = DateTime.UtcNow;
+                muutettuAika = j.timeTableRows[counter].scheduledTime.AddHours(2);
+                lbTulos.Items.Add(j.trainNumber + " " + j.trainType + "\t " + muutettuAika.ToString("yyyy-MM-dd \t HH:mm"));
                 counter = 0;
             }
 
@@ -171,18 +172,15 @@ namespace Juna_aikataulut
                         if (juna.timeTableRows[timeTableRowCounter].type == "ARRIVAL")
                         {
                            
-                            if (juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0])
-                            {
-                                lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("HH:mm")}  <= Nouse täältä kyytiin");
-                            }
+                            
 
 
                             if (juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[1])
                             {
-                                lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.ToString("HH:mm")}  <= Olet Perillä");
+                                lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.AddHours(2).ToString("HH:mm")}  <= Olet Perillä");
 
                             }
-                            saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime;
+                            saapumisAika = juna.timeTableRows[timeTableRowCounter].scheduledTime.AddHours(2);
 
                             //  Junan asemalta lähtöajan noukinta. 
                             //  Etsii ARRIVAL-kohdan stationShortCoden kanssa matchaavan DEPARTURE ajan 
@@ -193,7 +191,11 @@ namespace Juna_aikataulut
                                 {
                                     if (juna.timeTableRows[j].type == "DEPARTURE")
                                     {
-                                        lähtöAika = juna.timeTableRows[j].scheduledTime;
+                                        if (juna.timeTableRows[timeTableRowCounter].stationShortCode == junaMistäMinne[0])
+                                        {
+                                            lbJunanKulku.Items.Add($"Pysähtyy: {juna.timeTableRows[timeTableRowCounter].stationShortCode} \t Saapumisaika {juna.timeTableRows[timeTableRowCounter].scheduledTime.AddHours(2).ToString("HH:mm")}  <= Nouse täältä kyytiin");
+                                        }
+                                        lähtöAika = juna.timeTableRows[j].scheduledTime.AddHours(2);
                                     }
 
                                 }
